@@ -1,0 +1,12 @@
+<label>
+  Octave: <input type="number" min=0 max=3 size=1 ng-model="ctrl.startOctaveIndex"/>
+</label>
+<pk-note-params config="ctrl.config"></pk-note-params>
+<button ng-click="ctrl.applyToChord()">Apply to chord</button>
+<div>
+  <pk-piano-octave ng-repeat="oct in ctrl._.range(ctrl.octaveCount)" 
+    notes="notes"
+    toggle-note-fn="ctrl.toggleNote(noteIndex)"
+    octave="{{ctrl.startOctaveIndex + oct}}">
+  </pk-piano-octave>
+</div>

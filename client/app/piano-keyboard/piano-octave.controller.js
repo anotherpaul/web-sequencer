@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
   angular.module('pk-piano-keyboard').controller('pkPianoOctaveCtrl', pkPianoOctaveCtrl);
 
@@ -9,16 +9,9 @@
 
     function toggleNote(note) {
       var noteIndex = note + 12 * $scope.octave;
-
-      var foundNote = $scope.notes[noteIndex];
-      if (!foundNote) {
-        $scope.notes[noteIndex] = {
-          velocity: 0,
-          duration: 0
-        };
-      } else {
-        delete $scope.notes[noteIndex];
-      }
+      $scope.toggleNoteFn({
+        noteIndex: noteIndex
+      });
     }
   }
 })();

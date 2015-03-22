@@ -8,13 +8,13 @@
       scope: {
         notes: '='
       },
-      templateUrl: 'templates/piano-keyboard/piano-keyboard.template.html',
+      templateUrl: 'templates/piano-keyboard/piano-keyboard.directive.html',
       controller: 'pkPianoKeyboardCtrl as ctrl',
       link: link
     };
 
     function link(scope, elem, attr) {
-      scope.octaves = _.range(attr.octaveCount);
+      scope.octaveCount = attr.octaveCount;
     }
   }
 })();

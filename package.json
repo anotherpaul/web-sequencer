@@ -11,7 +11,9 @@
     "url": "https://github.com/anotherpaul/web-sequencer.git"
   },
   "author": "anotherpaul",
-  "postinstall": "bower install",
+  "scripts": {
+    "postinstall": "bower install"
+  },
   "dependencies": {
     "express": "^4.12.2"
   },

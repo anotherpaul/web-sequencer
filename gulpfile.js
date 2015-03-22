@@ -3,6 +3,8 @@ var inject = require('gulp-inject');
 var ngAnnotate = require('gulp-ng-annotate');
 var del = require('del');
 
+var config = require('./config');
+
 gulp.task('clean', function (cb) {
   del([
     './public/**',
@@ -32,16 +34,12 @@ gulp.task('templates', ['css'], function () {
 
 gulp.task('index', ['templates'], function () {
   var target = gulp.src('./client/index.html');
-  var vendorFiles = [
-    './public/vendor/angular/angular.min.js',
-    './public/vendor/lodash/lodash.min.js'
-  ];
   var appFiles = [
     './public/app/**/*.module.js',
     './public/app/**/*.js',
     './public/styles/**/*.css'
   ];
-  var files = gulp.src(vendorFiles.concat(appFiles), {read: false});
+  var files = gulp.src(config.vendorFiles.concat(appFiles), {read: false});
 
   return target.pipe(inject(files, {ignorePath: 'public'}))
     .pipe(gulp.dest('./public'));

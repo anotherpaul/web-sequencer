@@ -8,14 +8,10 @@
       controller: 'pkPianoOctaveCtrl as ctrl',
       scope: {
         notes: '=',
-        octave: '@'
+        octave: '@',
+        toggleNoteFn: '&'
       },
-      templateUrl: 'templates/piano-keyboard/piano-octave.template.html',
-      link: link
+      templateUrl: 'templates/piano-keyboard/piano-octave.directive.html'
     };
-  }
-
-  function link(scope, elem, attr){
-
   }
 })();

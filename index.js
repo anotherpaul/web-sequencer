@@ -10,6 +10,6 @@ app.get('/', function (req, res) {
   res.redirect('/index.html');
 });
 
-var server = app.listen(8000, function() {
+var server = app.listen(process.env.PORT, process.env.IP, function() {
   console.log('Listening on port %d', server.address().port);
 });

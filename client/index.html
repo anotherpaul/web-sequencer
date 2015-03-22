@@ -6,10 +6,10 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body ng-controller="SequencerController as ctrl">
+<body ng-controller="SequencerCtrl as ctrl">
 <div>
+  <pk-piano-keyboard octave-count="4" notes="ctrl.notes"></pk-piano-keyboard>
   <div>{{ ctrl.notes }}</div>
-  <pk-piano-keyboard octave-count="3" notes="ctrl.notes"></pk-piano-keyboard>
 </div>
 <!-- inject:js -->
 <!-- endinject -->

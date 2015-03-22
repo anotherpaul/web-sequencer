@@ -1,8 +1,8 @@
 (function () {
   'use strict';
-  angular.module('pk-sequencer').controller('SequencerController', SequencerController);
+  angular.module('pk-sequencer').controller('SequencerCtrl', SequencerCtrl);
 
-  function SequencerController(){
+  function SequencerCtrl(){
     var vm = this;
     vm.notes = {};
   }
