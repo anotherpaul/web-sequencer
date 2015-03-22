@@ -1,0 +1,59 @@
+.piano-octave {
+  position: relative;
+  float: left;
+}
+
+.piano-key-active {
+  position: absolute;
+  color: red;
+  margin: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.piano-key {
+  box-sizing: border-box;
+  float: left;
+  border: 1px solid black;
+  display: block;
+}
+
+.black-keys {
+  position: relative;
+}
+
+div.black-keys div {
+  position: absolute;
+  background-color: black;
+  width: 10px;
+  height: 100px;
+  z-index: 10;
+}
+
+div.white-keys div {
+  position: relative;
+  background-color: white;
+  width: 20px;
+  height: 150px;
+}
+
+div.black-keys div:nth-of-type(1) {
+  margin-left: 15px;
+}
+
+div.black-keys div:nth-of-type(2) {
+  margin-left: 35px;
+}
+
+div.black-keys div:nth-of-type(3) {
+  margin-left: 75px;
+}
+
+div.black-keys div:nth-of-type(4) {
+  margin-left: 95px;
+}
+
+div.black-keys div:nth-of-type(5) {
+  margin-left: 115px;
+}
