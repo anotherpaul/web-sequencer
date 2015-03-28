@@ -1,0 +1,6 @@
+<div layout="column">
+  <div layout="row" ng-repeat="note in notes">
+    <div>{{note.name}}</div>
+    <div ng-repeat="beat in note.beats"></div>
+  </div>
+</div>

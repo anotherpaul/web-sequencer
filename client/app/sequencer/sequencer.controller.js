@@ -5,10 +5,9 @@
   function SequencerCtrl($q) {
     var vm = this;
     vm.playChord = playChord;
+    vm.loading = false;
     vm.changeInstrument = changeInstrument;
     vm.notes = {};
-    var deferredLoading = $q.defer();
-    vm.pluginLoadingPromise = deferredLoading.promise;
     vm.availableInstruments = [{
       value: 0,
       name: 'piano'
@@ -19,6 +18,7 @@
     vm.selectedInstument = vm.availableInstruments[1];
     vm.drumNote = 0;
     vm.testDrumNote = testDrumNote;
+    vm.loadingPromise = $q.defer();
 
     function playMidiNote(noteIndex, noteParams) {
       var delay = 0; // play one note every quarter second
@@ -44,14 +44,27 @@
       });
     }
 
-    MIDI.loadPlugin({
-      soundfontUrl: './soundfont/',
-      instruments: ['synth_drum', 'acoustic_grand_piano'],
-      onsuccess: function() {
-        MIDI.setVolume(0, 127);
-        changeInstrument();
-        deferredLoading.resolve();
-      }
-    });
+    function loadMidiInstruments() {
+      var deferred = $q.defer();
+      MIDI.loadPlugin({
+        soundfontUrl: './soundfont/',
+        instruments: ['synth_drum', 'acoustic_grand_piano'],
+        onsuccess: function() {
+          MIDI.setVolume(0, 127);
+          changeInstrument();
+          deferred.resolve();
+        }
+      });
+      return deferred.promise;
+    }
+
+    function activate() {
+      vm.loading = true;
+      loadMidiInstruments().then(function() {
+        vm.loading = false;
+      });
+    }
+
+    activate();
   }
 })();

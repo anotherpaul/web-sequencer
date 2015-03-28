@@ -1,26 +1,27 @@
 <div class="piano-octave">
   <div class="white-keys">
     <div class="piano-key" ng-click="ctrl.toggleNote(1)">
+      <span>{{octave}}</span>
       <div class="piano-key-name" ng-class="{true:'piano-key-active', false:''}[!!notes[1 + 12*octave]]">C</div>
     </div>
     <div class="piano-key" ng-click="ctrl.toggleNote(3)">
       <div class="piano-key-name" ng-class="{true:'piano-key-active', false:''}[!!notes[3 + 12*octave]]">D</div>
-    </div>    
+    </div>
     <div class="piano-key" ng-click="ctrl.toggleNote(5)">
       <div class="piano-key-name" ng-class="{true:'piano-key-active', false:''}[!!notes[5 + 12*octave]]">E</div>
-    </div>    
+    </div>
     <div class="piano-key" ng-click="ctrl.toggleNote(6)">
       <div class="piano-key-name" ng-class="{true:'piano-key-active', false:''}[!!notes[6 + 12*octave]]">F</div>
-    </div>    
+    </div>
     <div class="piano-key" ng-click="ctrl.toggleNote(8)">
       <div class="piano-key-name" ng-class="{true:'piano-key-active', false:''}[!!notes[8 + 12*octave]]">G</div>
-    </div>    
+    </div>
     <div class="piano-key" ng-click="ctrl.toggleNote(10)">
       <div class="piano-key-name" ng-class="{true:'piano-key-active', false:''}[!!notes[10 + 12*octave]]">A</div>
-    </div>    
+    </div>
     <div class="piano-key" ng-click="ctrl.toggleNote(12)">
       <div class="piano-key-name" ng-class="{true:'piano-key-active', false:''}[!!notes[12 + 12*octave]]">B</div>
-    </div>        
+    </div>
   </div>
   <div class="black-keys">
     <div class="piano-key piano-key-black-1" ng-click="ctrl.toggleNote(2)">

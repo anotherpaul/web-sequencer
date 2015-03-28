@@ -1,13 +1,18 @@
-<label>
-  Octave: <input type="number" min=0 max=3 size=1 ng-model="ctrl.startOctaveIndex"/>
-</label>
-<pk-note-params config="ctrl.config"></pk-note-params>
-<button ng-click="ctrl.applyToChord()">Apply to chord</button>
-<button ng-click="ctrl.cleanChord()">Clean chord</button>
-<div>
-  <pk-piano-octave ng-repeat="oct in ctrl._.range(ctrl.octaveCount)" 
-    notes="notes"
-    toggle-note-fn="ctrl.toggleNote(noteIndex)"
-    octave="{{ctrl.startOctaveIndex + oct}}">
-  </pk-piano-octave>
+<div layout="column">
+  <div layout="row">
+    <div layout="row">
+      <md-button class="md-raised" ng-click="ctrl.decreaseOctave()">-</md-button>
+      <div layout layout-align="center center">
+        {{ctrl.startOctaveIndex}}
+      </div>
+      <md-button class="md-raised" ng-click="ctrl.increaseOctave()">+</md-button>
+    </div>
+    <pk-note-params config="ctrl.config"></pk-note-params>
+    <md-button class="md-raised" ng-click="ctrl.applyToChord()">Apply</md-button>
+    <md-button class="md-raised" ng-click="ctrl.cleanChord()">Clean</md-button>
+  </div>
+  <div layout="row">
+    <pk-piano-octave ng-repeat="oct in ctrl._.range(ctrl.octaveCount)" notes="notes" toggle-note-fn="ctrl.toggleNote(noteIndex)" octave="{{ctrl.startOctaveIndex + oct}}">
+    </pk-piano-octave>
+  </div>
 </div>

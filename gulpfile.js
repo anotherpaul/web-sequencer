@@ -1,6 +1,8 @@
 var gulp = require('gulp');
+var series = require('stream-series');
 var inject = require('gulp-inject');
 var ngAnnotate = require('gulp-ng-annotate');
+var angularFilesort = require('gulp-angular-filesort');
 var del = require('del');
 
 var config = require('./config');
@@ -39,14 +41,14 @@ gulp.task('soundfonts', ['templates'], function() {
 
 gulp.task('index', ['soundfonts'], function() {
   var target = gulp.src('./client/index.html');
-  var appFiles = [
+  var appJsFiles = gulp.src([
     './public/app/**/*.module.js',
-    './public/app/**/*.js',
-    './public/styles/**/*.css'
-  ];
-  var files = gulp.src(config.vendorFiles.concat(appFiles), {
-    read: false
-  });
+    './public/app/**/*.js'
+  ]).pipe(angularFilesort());
+  var appCssFiles = gulp.src('./public/styles/**/*.css');
+  var vendorFiles = gulp.src(config.vendorFiles);
+  
+  var files = series(vendorFiles, appJsFiles, appCssFiles);
 
   return target.pipe(inject(files, {
       ignorePath: 'public'

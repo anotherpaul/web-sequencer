@@ -3,10 +3,13 @@
 var path = require('path');
 var vendorFileList = [
   'angular/angular.min.js',
-  'angular-busy/dist/angular-busy.min.js',
-  'angular-busy/dist/angular-busy.min.css',
+  'angular-ui-router/release/angular-ui-router.min.js',
+  'angular-animate/angular-animate.min.js',
+  'angular-aria/angular-aria.min.js',
+  'angular-material/angular-material.min.js',
+  'angular-material/angular-material.min.css',
   'lodash/lodash.min.js',
-  'midi/build/MIDI.js',
+  'midi/build/MIDI.min.js',
   'midi/inc/shim/Base64.js',
   'midi/inc/shim/Base64binary.js'
 ];

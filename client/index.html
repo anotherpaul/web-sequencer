@@ -3,19 +3,15 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
   <title>Sequencer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
   <!-- inject:css -->
   <!-- endinject -->
 </head>
 
-<body ng-controller="SequencerCtrl as ctrl">
-  <select ng-options="instrument as instrument.name for instrument in ctrl.availableInstruments" ng-model="ctrl.selectedInstument" ng-change="ctrl.changeInstrument()"></select>
-  <div cg-busy="{promise:ctrl.pluginLoadingPromise,message:'loading instruments...'}">
-    <pk-piano-keyboard octave-count="4" notes="ctrl.notes" ng-click="ctrl.playChord()"></pk-piano-keyboard>
-    {{ctrl.notes}}
-  </div>
-  Test note: <input type="number" size="1" step="1" ng-model="ctrl.drumNote"/>
-  <button ng-click="ctrl.testDrumNote()">test</button>
+<body>
+  <md-content ui-view md-scroll-y flex></md-content>
   <!-- inject:js -->
   <!-- endinject -->
 </body>

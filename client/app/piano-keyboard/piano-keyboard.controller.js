@@ -10,6 +10,8 @@
     vm._ = _;
     vm.octaveCount = $scope.octaveCount;
     vm.startOctaveIndex = 2;
+    vm.increaseOctave = increaseOctave;
+    vm.decreaseOctave = decreaseOctave;
     if (!vm.octaveCount) {
       vm.octaveCount = pkPianoKeyboardConstants.octaveCount;
     }
@@ -17,7 +19,7 @@
       velocity: pkNoteConstants.defaultVelocity,
       duration: pkNoteConstants.defaultDuration
     };
-    
+
     function applyToChord() {
       _.each(Object.keys($scope.notes), function(note) {
         $scope.notes[note] = {
@@ -26,7 +28,7 @@
         };
       });
     }
-    
+
     function cleanChord() {
       $scope.notes = {};
     }
@@ -41,6 +43,18 @@
       }
       else {
         delete $scope.notes[noteIndex];
+      }
+    }
+
+    function decreaseOctave() {
+      if (vm.startOctaveIndex > 0) {
+        vm.startOctaveIndex = vm.startOctaveIndex - 1;
+      }
+    }
+
+    function increaseOctave() {
+      if (vm.startOctaveIndex < pkPianoKeyboardConstants.maxOctave - pkPianoKeyboardConstants.octaveCount) {
+        vm.startOctaveIndex = vm.startOctaveIndex + 1;
       }
     }
 

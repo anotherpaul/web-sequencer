@@ -1,0 +1,18 @@
+<div layout="column" layout-margin>
+  <div layout="row" layout-align="space-around center" ng-show="ctrl.loading">
+    <md-whiteframe class="md-whiteframe-z1" layout-padding layout="column" layout-align="space-around center">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      <h1 class=".md-display-4">Loading</h1>
+    </md-whiteframe>
+  </div>
+  <div layout="column" layout-align="space-around" ng-show="!ctrl.loading">
+    <div layout="row">
+      <md-select ng-model="ctrl.selectedInstument" ng-change="ctrl.changeInstrument()">
+        <md-option ng-value="instrument" ng-repeat="instrument in ctrl.availableInstruments">{{ instrument.name }}</md-option>
+      </md-select>
+    </div>
+    <md-whiteframe class="md-whiteframe-z1" layout-padding layout-align="center center">
+      <pk-piano-keyboard octave-count="4" notes="ctrl.notes" ng-click="ctrl.playChord()"></pk-piano-keyboard>
+    </md-whiteframe>
+  </div>
+</div>

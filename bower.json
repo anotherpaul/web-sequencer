@@ -19,6 +19,7 @@
     "lodash": "~3.5.0",
     "midi": "*",
     "midi-soundfonts-partial": "*",
-    "angular-busy": "~4.1.2"
+    "angular-material": "~0.8.3",
+    "angular-ui-router": "~0.2.13"
   }
 }
