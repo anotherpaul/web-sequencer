@@ -10,10 +10,13 @@
     var deferredLoading = $q.defer();
     vm.pluginLoadingPromise = deferredLoading.promise;
     vm.availableInstruments = [{
+      value: 0,
+      name: 'piano'
+    }, {
       value: 118,
       name: 'percussion'
     }];
-    vm.selectedInstument = vm.availableInstruments[0];
+    vm.selectedInstument = vm.availableInstruments[1];
     vm.drumNote = 0;
     vm.testDrumNote = testDrumNote;
 
@@ -33,15 +36,18 @@
     function changeInstrument() {
       MIDI.programChange(0, vm.selectedInstument.value);
     }
-    
+
     function testDrumNote() {
-      playMidiNote(vm.drumNote, {velocity: 127, duration: 2});
+      playMidiNote(vm.drumNote, {
+        velocity: 127,
+        duration: 2
+      });
     }
 
     MIDI.loadPlugin({
       soundfontUrl: './soundfont/',
-      instruments: ['synth_drum'],
-      callback: function() {
+      instruments: ['synth_drum', 'acoustic_grand_piano'],
+      onsuccess: function() {
         MIDI.setVolume(0, 127);
         changeInstrument();
         deferredLoading.resolve();
