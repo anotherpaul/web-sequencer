@@ -6,6 +6,7 @@
     var vm = this;
     vm.toggleNote = toggleNote;
     vm.applyToChord = applyToChord;
+    vm.cleanChord = cleanChord;
     vm._ = _;
     vm.octaveCount = $scope.octaveCount;
     vm.startOctaveIndex = 2;
@@ -24,6 +25,10 @@
           duration: vm.config.duration
         };
       });
+    }
+    
+    function cleanChord() {
+      $scope.notes = {};
     }
 
     function toggleNote(noteIndex) {

@@ -3,6 +3,7 @@
 </label>
 <pk-note-params config="ctrl.config"></pk-note-params>
 <button ng-click="ctrl.applyToChord()">Apply to chord</button>
+<button ng-click="ctrl.cleanChord()">Clean chord</button>
 <div>
   <pk-piano-octave ng-repeat="oct in ctrl._.range(ctrl.octaveCount)" 
     notes="notes"

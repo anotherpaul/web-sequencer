@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html ng-app="app">
+
 <head>
   <meta charset="utf-8">
   <title>Sequencer</title>
   <!-- inject:css -->
   <!-- endinject -->
 </head>
+
 <body ng-controller="SequencerCtrl as ctrl">
-<div>
-  <pk-piano-keyboard octave-count="4" notes="ctrl.notes"></pk-piano-keyboard>
-  <div>{{ ctrl.notes }}</div>
-</div>
-<!-- inject:js -->
-<!-- endinject -->
+  <select ng-options="instrument as instrument.name for instrument in ctrl.availableInstruments" ng-model="ctrl.selectedInstument" ng-change="ctrl.changeInstrument()"></select>
+  <div cg-busy="{promise:ctrl.pluginLoadingPromise,message:'loading instruments...'}">
+    <pk-piano-keyboard octave-count="4" notes="ctrl.notes" ng-click="ctrl.playChord()"></pk-piano-keyboard>
+    {{ctrl.notes}}
+  </div>
+  Test note: <input type="number" size="1" step="1" ng-model="ctrl.drumNote"/>
+  <button ng-click="ctrl.testDrumNote()">test</button>
+  <!-- inject:js -->
+  <!-- endinject -->
 </body>
+
 </html>

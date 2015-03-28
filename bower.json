@@ -16,6 +16,9 @@
   ],
   "dependencies": {
     "angular": "~1.3.15",
-    "lodash": "~3.5.0"
+    "lodash": "~3.5.0",
+    "midi": "*",
+    "midi-soundfonts-partial": "*",
+    "angular-busy": "~4.1.2"
   }
 }
