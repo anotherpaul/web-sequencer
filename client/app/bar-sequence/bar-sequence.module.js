@@ -1,4 +1,4 @@
 (function() {
   'use strict';
-  angular.module('pk-bar-sequence', []);
+  angular.module('pk-bar-sequence', ['pk-common']);
 })();

@@ -9,7 +9,11 @@ var config = require('./config');
 
 gulp.task('clean', function(cb) {
   del([
-    './public/**',
+    'public/app/**/*',
+    'public/styles/**/*',
+    'public/templates/**/*',
+    'public/vendor/**/*',
+    'public/index.html'
   ], cb);
 });
 
@@ -34,12 +38,12 @@ gulp.task('templates', ['css'], function() {
     .pipe(gulp.dest('./public/templates'));
 });
 
-gulp.task('soundfonts', ['templates'], function() {
+gulp.task('soundfonts', function() {
   return gulp.src(config.soundfonts)
     .pipe(gulp.dest('./public/soundfont'));
 });
 
-gulp.task('index', ['soundfonts'], function() {
+gulp.task('index', ['templates'], function() {
   var target = gulp.src('./client/index.html');
   var appJsFiles = gulp.src([
     './public/app/**/*.module.js',
@@ -47,7 +51,7 @@ gulp.task('index', ['soundfonts'], function() {
   ]).pipe(angularFilesort());
   var appCssFiles = gulp.src('./public/styles/**/*.css');
   var vendorFiles = gulp.src(config.vendorFiles);
-  
+
   var files = series(vendorFiles, appJsFiles, appCssFiles);
 
   return target.pipe(inject(files, {
@@ -55,5 +59,7 @@ gulp.task('index', ['soundfonts'], function() {
     }))
     .pipe(gulp.dest('./public'));
 });
+
+gulp.task('full', ['soundfonts', 'index']);
 
 gulp.task('default', ['index']);

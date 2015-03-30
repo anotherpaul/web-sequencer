@@ -6,10 +6,9 @@
     return {
       restrict: 'E',
       scope: {
-        notes: '=',
         selectedBeat: '='
       },
-      templateUrl: 'templates/bar-sequence/bar-sequence.directive.html',
+      templateUrl: 'templates/bar-sequence/bar-sequence.directive.tpl.html',
       controller: 'pkBarSequenceCtrl as ctrl'
     };
   }

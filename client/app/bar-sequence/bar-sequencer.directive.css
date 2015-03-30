@@ -1,0 +1,19 @@
+.sequencer-table td,
+th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+.sequencer-cell {
+  width: 100%;
+  text-align: center;
+}
+.sequencer-beat-active {
+  background-color: blue;
+}
+.sequencer-buttons {
+  width: 100%;
+  text-align: center;
+}
+.sequencer-buttons .md-button {
+  margin: 0;
+}

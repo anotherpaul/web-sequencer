@@ -6,13 +6,18 @@
     </md-whiteframe>
   </div>
   <div layout="column" layout-align="space-around" ng-show="!ctrl.loading">
-    <div layout="row">
-      <md-select ng-model="ctrl.selectedInstument" ng-change="ctrl.changeInstrument()">
-        <md-option ng-value="instrument" ng-repeat="instrument in ctrl.availableInstruments">{{ instrument.name }}</md-option>
-      </md-select>
-    </div>
+    <md-whiteframe class="md-whiteframe-z1" layout-padding layout-align="center center">
+      <div layout="row">
+        <md-select ng-model="ctrl.selectedInstument" ng-change="ctrl.changeInstrument()">
+          <md-option ng-value="instrument" ng-repeat="instrument in ctrl.availableInstruments">{{ instrument.name }}</md-option>
+        </md-select>
+      </div>
+    </md-whiteframe>
     <md-whiteframe class="md-whiteframe-z1" layout-padding layout-align="center center">
       <pk-piano-keyboard octave-count="4" notes="ctrl.notes" ng-click="ctrl.playChord()"></pk-piano-keyboard>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-z1" layout-padding layout-align="center center">
+      <pk-bar-sequence selected-beat="ctrl.notes"></pk-bar-sequence>
     </md-whiteframe>
   </div>
 </div>
