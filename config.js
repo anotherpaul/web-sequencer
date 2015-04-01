@@ -11,7 +11,8 @@ var vendorFileList = [
   'lodash/lodash.min.js',
   'midi/build/MIDI.min.js',
   'midi/inc/shim/Base64.js',
-  'midi/inc/shim/Base64binary.js'
+  'midi/inc/shim/Base64binary.js',
+  'font-awesome/css/font-awesome.min.css'
 ];
 var vendorDir = './public/vendor';
 var vendorFiles = vendorFileList.map(function(entry) {

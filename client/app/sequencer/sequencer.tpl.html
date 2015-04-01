@@ -5,19 +5,35 @@
       <h1 class=".md-display-4">Loading</h1>
     </md-whiteframe>
   </div>
-  <div layout="column" layout-align="space-around" ng-show="!ctrl.loading">
-    <md-whiteframe class="md-whiteframe-z1" layout-padding layout-align="center center">
-      <div layout="row">
-        <md-select ng-model="ctrl.selectedInstument" ng-change="ctrl.changeInstrument()">
-          <md-option ng-value="instrument" ng-repeat="instrument in ctrl.availableInstruments">{{ instrument.name }}</md-option>
-        </md-select>
+  <div layout="column" layout-align="space-around center" ng-show="!ctrl.loading">
+    <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+      <div layout="row" layout-align="start center">
+        <md-button aria-label="play" class="tool-button md-raised" ng-click="ctrl.startBarPlayback()"><span><i class="fa fa-play"></i></span>
+        </md-button>
+        <md-button aria-label="stop" class="tool-button md-raised" ng-click="ctrl.stopBarPlayback()"><span><i class="fa fa-stop"></i></span>
+        </md-button>
+        <md-input-container>
+          <label>Tempo</label>
+          <input type="number" min=60 max=300 size=1 step=1 ng-model="ctrl.tempoBpm" />
+        </md-input-container>
+        <md-checkbox ng-model="ctrl.loopPlayback">Loop</md-checkbox>
       </div>
     </md-whiteframe>
-    <md-whiteframe class="md-whiteframe-z1" layout-padding layout-align="center center">
-      <pk-piano-keyboard octave-count="4" notes="ctrl.notes" ng-click="ctrl.playChord()"></pk-piano-keyboard>
+    <md-whiteframe class="md-whiteframe-z1" layout layout-align="space-around center">
+      <md-select ng-model="ctrl.selectedInstument" ng-change="ctrl.applyInstrument()">
+        <md-option ng-value="instrument" ng-repeat="instrument in ctrl.availableInstruments">{{ instrument.name }}</md-option>
+      </md-select>
     </md-whiteframe>
-    <md-whiteframe class="md-whiteframe-z1" layout-padding layout-align="center center">
-      <pk-bar-sequence selected-beat="ctrl.notes"></pk-bar-sequence>
+    <div layout="row" layout-align="space-around center">
+      <md-whiteframe class="md-whiteframe-z1" layout>
+        <pk-note-params config="ctrl.noteParams"></pk-note-params>
+      </md-whiteframe>
+      <md-whiteframe class="md-whiteframe-z1" layout>
+        <pk-piano-keyboard octave-count="4" notes="ctrl.currentNotes" note-params="ctrl.noteParams" on-chord-change="ctrl.playCurrentNotes()"></pk-piano-keyboard>
+      </md-whiteframe>
+    </div>
+    <md-whiteframe class="md-whiteframe-z1" layout layout-align="space-around center">
+      <pk-bar-sequence bar="ctrl.currentBar" beat-count="ctrl.beatCount" selected-beat="ctrl.currentNotes" default-note-params="ctrl.noteParams"></pk-bar-sequence>
     </md-whiteframe>
   </div>
 </div>

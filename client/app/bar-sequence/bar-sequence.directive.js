@@ -6,7 +6,10 @@
     return {
       restrict: 'E',
       scope: {
-        selectedBeat: '='
+        bar: '=',
+        beatCount: '=',
+        selectedBeat: '=',
+        defaultNoteParams: '='
       },
       templateUrl: 'templates/bar-sequence/bar-sequence.directive.tpl.html',
       controller: 'pkBarSequenceCtrl as ctrl'

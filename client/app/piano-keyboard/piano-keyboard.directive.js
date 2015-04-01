@@ -6,7 +6,9 @@
     return {
       restrict: 'E',
       scope: {
-        notes: '='
+        notes: '=',
+        noteParams: '=',
+        onChordChange: '&'
       },
       templateUrl: 'templates/piano-keyboard/piano-keyboard.directive.html',
       controller: 'pkPianoKeyboardCtrl as ctrl',

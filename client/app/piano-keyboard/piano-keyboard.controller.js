@@ -15,16 +15,12 @@
     if (!vm.octaveCount) {
       vm.octaveCount = pkPianoKeyboardConstants.octaveCount;
     }
-    vm.config = {
-      velocity: pkNoteConstants.defaultVelocity,
-      duration: pkNoteConstants.defaultDuration
-    };
 
     function applyToChord() {
       _.each(Object.keys($scope.notes), function(note) {
         $scope.notes[note] = {
-          velocity: vm.config.velocity,
-          duration: vm.config.duration
+          velocity: $scope.noteParams.velocity,
+          duration: $scope.noteParams.duration
         };
       });
     }
@@ -37,13 +33,14 @@
       var foundNote = $scope.notes[noteIndex];
       if (!foundNote) {
         $scope.notes[noteIndex] = {
-          velocity: vm.config.velocity,
-          duration: vm.config.duration
+          velocity: $scope.noteParams.velocity,
+          duration: $scope.noteParams.duration
         };
       }
       else {
         delete $scope.notes[noteIndex];
       }
+      $scope.onChordChange();
     }
 
     function decreaseOctave() {

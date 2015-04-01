@@ -3,23 +3,28 @@
     <tr>
       <td>Note:</td>
       <td ng-repeat="beat in ctrl.getBeatCount()">
-        <div class="sequencer-buttons">
-          <md-button ng-click="ctrl.selectBeat(beat)">get</md-button>
-          <md-button ng-click="ctrl.writeSelectedBeat(beat)">set</md-button>
-          <md-button ng-click="ctrl.addNotesToSelectedBeat(beat)">add</md-button>
+        <div layout="column" class="sequencer-buttons">
+          <md-button aria-label="get" class="tool-button md-raised" ng-click="ctrl.selectBeat(beat)"><span><i class="fa fa-arrow-circle-up"></i></span></md-button>
+          <md-button aria-label="set" class="tool-button md-raised" ng-click="ctrl.writeSelectedBeat(beat)"><span><i class="fa fa-arrow-circle-down"></i></span></md-button>
+          <md-button aria-label="add" class="tool-button md-raised" ng-click="ctrl.addNotesToSelectedBeat(beat)"><span><i class="fa fa-plus-circle"></i></span></md-button>
         </div>
       </td>
     </tr>
-    <tr ng-repeat="note in ctrl.displayedBar.notes">
+    <tr ng-repeat="note in ctrl.displayedBar">
       <td class="sequencer-note">
         <span class="sequencer-cell">
           {{note.name}}
         </span>
       </td>
       <td class="sequencer-beat" ng-repeat="beat in ctrl.getBeatCount()">
-        <div class="sequencer-cell" layout="column" ng-show="!!note.beats[beat]">
+        <div class="sequencer-cell" layout="column" layout-align="space-around center" ng-show="!!note.beats[beat]">
           <span>V:{{note.beats[beat].velocity}}</span>
           <span>D:{{note.beats[beat].duration}}</span>
+        </div>
+        <div class="sequencer-cell" layout="column" layout-align="space-around center" ng-hide="!!note.beats[beat]">
+          <md-button aria-label="add" class="tool-button" ng-click="ctrl.addNote(note.name, beat)">
+            <span><i class="fa fa-plus"></i></span>
+          </md-button>
         </div>
       </td>
     </tr>
