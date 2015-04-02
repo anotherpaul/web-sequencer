@@ -8,6 +8,9 @@
 .sequencer-beat-active {
   background-color: blue;
 }
+.sequencer-beat {
+  width:4.2em;
+}
 .sequencer-buttons {
   width: 100%;
   text-align: center;

@@ -12,6 +12,7 @@
     vm.addNotesToSelectedBeat = addNotesToSelectedBeat;
     vm.selectBeat = selectBeat;
     vm.addNote = addNote;
+    vm.removeNote = removeNote;
 
     function getBeatCount() {
       return _.range($scope.beatCount);
@@ -50,6 +51,13 @@
       var notes = {};
       notes[noteName] = $scope.defaultNoteParams;
       addBeatNotes(beatIndex, notes);
+    }
+
+    function removeNote(noteName, beatIndex) {
+      if ($scope.bar[beatIndex]) {
+        delete $scope.bar[beatIndex][noteName];
+        vm.updateDisplayedBar();
+      }
     }
 
     function updateDisplayedBar() {

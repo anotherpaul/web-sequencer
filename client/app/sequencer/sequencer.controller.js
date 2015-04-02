@@ -2,7 +2,7 @@
   'use strict';
   angular.module('pk-sequencer').controller('SequencerCtrl', SequencerCtrl);
 
-  function SequencerCtrl($interval, pkMidiService, _) {
+  function SequencerCtrl($interval, pkMidiService, pkNoteConstants, _) {
     var vm = this;
     vm.playCurrentNotes = playCurrentNotes;
     vm.startBarPlayback = startBarPlayback;
@@ -26,6 +26,11 @@
     vm.currentTrackIndex = 0;
     vm.currentBarIndex = 0;
     vm.loopPlayback = false;
+    
+    vm.noteParams = {
+      velocity: pkNoteConstants.defaultVelocity,
+      duration: pkNoteConstants.durationList[pkNoteConstants.defaultDurationIndex].value
+    };
 
     var playbackHandle;
 
