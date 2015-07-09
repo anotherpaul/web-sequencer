@@ -1,6 +1,8 @@
 <div layout="column" layout-align="center">
   <md-select class="note-input" ng-model="config.duration">
     <md-option ng-value="duration.value" ng-repeat="duration in ctrl.durationList">{{ ::duration.caption }}</md-option>
-  </md-select>  
-  <input class="note-input" type="number" min=1 max=127 size=1 step=1 ng-model="config.velocity" />
+  </md-select>
+  <md-select class="note-input" ng-model="config.velocity">
+    <md-option ng-value="velocity.value" ng-repeat="velocity in ctrl.velocityList">{{ ::velocity.caption }}</md-option>
+  </md-select>
 </div>

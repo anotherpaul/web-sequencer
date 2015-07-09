@@ -2,9 +2,8 @@
   'use strict';
   angular.module('pk-sequencer').controller('SequencerCtrl', SequencerCtrl);
 
-  function SequencerCtrl($interval, pkMidiService, pkNoteConstants, _) {
+  function SequencerCtrl($interval, pkMidiService, _) {
     var vm = this;
-    vm.playCurrentNotes = playCurrentNotes;
     vm.startBarPlayback = startBarPlayback;
     vm.stopBarPlayback = stopBarPlayback;
     vm.loading = false;
@@ -26,40 +25,23 @@
     vm.currentTrackIndex = 0;
     vm.currentBarIndex = 0;
     vm.loopPlayback = false;
-    
-    vm.noteParams = {
-      velocity: pkNoteConstants.defaultVelocity,
-      duration: pkNoteConstants.durationList[pkNoteConstants.defaultDurationIndex].value
-    };
 
     var playbackHandle;
 
-    vm.selectedInstument = vm.availableInstruments[1];
+    vm.selectedInstrument = vm.availableInstruments[1];
 
     function applyInstrument() {
       if (vm.tracks[vm.currentTrackIndex]) {
-        vm.tracks[vm.currentTrackIndex].instrument = vm.selectedInstument;
+        vm.tracks[vm.currentTrackIndex].instrument = vm.selectedInstrument;
         pkMidiService.changeInstrument(vm.tracks[vm.currentTrackIndex].channel, vm.tracks[vm.currentTrackIndex].instrument.value);
       }
-    }
-
-    function playChord(channel, notes, delay) {
-      if (!_.isEmpty(notes)) {
-        Object.keys(notes).forEach(function(key) {
-          pkMidiService.playNote(channel, key, notes[key], delay);
-        });
-      }
-    }
-
-    function playCurrentNotes() {
-      playChord(vm.tracks[vm.currentTrackIndex].channel, vm.currentNotes, 0);
     }
 
     function startBarPlayback() {
       stopBarPlayback();
       vm.currentBeatIndex = 0;
       playbackHandle = $interval(function() {
-        playChord(vm.tracks[vm.currentTrackIndex].channel, vm.currentBar[vm.currentBeatIndex], 0);
+        pkMidiService.playChord(vm.tracks[vm.currentTrackIndex].channel, vm.currentBar[vm.currentBeatIndex], 0);
         vm.currentBeatIndex = vm.currentBeatIndex + 1;        
         if (vm.currentBeatIndex >= vm.beatCount) {
           if (vm.loopPlayback) {
@@ -82,7 +64,7 @@
       vm.tracks = [{
         title: 'drums',
         instrument: vm.availableInstruments[1],
-        channel: 0,
+        channel: 10,
         bars: []
       }];
       vm.tracks.forEach(function(track) {

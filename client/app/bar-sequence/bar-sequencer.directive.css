@@ -1,5 +1,5 @@
 .sequencer-table td, th {
-  border: 1px solid #999;
+  border: none;
 }
 .sequencer-cell {
   width: 100%;
@@ -10,6 +10,12 @@
 }
 .sequencer-beat {
   width:4.2em;
+}
+.sequencer-head {
+  text-align: center;
+}
+.sequencer-note {
+  background-color: #B2DFDB;
 }
 .sequencer-buttons {
   width: 100%;

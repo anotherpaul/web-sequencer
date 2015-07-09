@@ -2,8 +2,30 @@
   'use strict';
   angular.module('pk-note').constant('pkNoteConstants', {
     names: [null, 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
-    defaultVelocity: 100,
+    defaultVelocityIndex: 6,
     defaultDurationIndex: 1,
+    velocityList: [{
+      value: 16,
+      caption: 'ppp'
+    }, {
+      value: 32,
+      caption: 'pp'
+    }, {
+      value: 48,
+      caption: 'mp'
+    }, {
+      value: 64,
+      caption: 'mf'
+    }, {
+      value: 96,
+      caption: 'f'
+    }, {
+      value: 112,
+      caption: 'ff'
+    }, {
+      value: 127,
+      caption: 'fff'
+    }],
     durationList: [{
       value: 0.125,
       caption: '1/32'

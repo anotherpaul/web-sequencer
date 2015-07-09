@@ -4,6 +4,7 @@
 
   function pkNoteParamsCtrl($scope, pkNoteConstants) {
     var vm = this;
+    vm.velocityList = pkNoteConstants.velocityList;
     vm.durationList = pkNoteConstants.durationList;
   }
 })();

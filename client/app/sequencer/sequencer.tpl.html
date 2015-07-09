@@ -20,18 +20,11 @@
       </div>
     </md-whiteframe>
     <md-whiteframe class="md-whiteframe-z1" layout layout-align="space-around center">
-      <md-select ng-model="ctrl.selectedInstument" ng-change="ctrl.applyInstrument()">
-        <md-option ng-value="instrument" ng-repeat="instrument in ctrl.availableInstruments">{{ instrument.name }}</md-option>
+      <md-select ng-model="ctrl.selectedInstrument" ng-change="ctrl.applyInstrument()">
+        <md-option ng-value="instrument" ng-repeat="instrument in ctrl.availableInstruments" value="{{instrument.value}}">{{ instrument.name }}</md-option>
       </md-select>
     </md-whiteframe>
-    <div layout="row" layout-align="space-around center">
-      <md-whiteframe class="md-whiteframe-z1" layout>
-        <pk-note-params config="ctrl.noteParams"></pk-note-params>
-      </md-whiteframe>
-      <md-whiteframe class="md-whiteframe-z1" layout>
-        <pk-piano-keyboard octave-count="4" notes="ctrl.currentNotes" note-params="ctrl.noteParams" on-chord-change="ctrl.playCurrentNotes()"></pk-piano-keyboard>
-      </md-whiteframe>
-    </div>
+    <pk-instrument track="ctrl.tracks[ctrl.currentTrackIndex]" note-params="ctrl.noteParams" notes="ctrl.currentNotes"></pk-instrument>
     <md-whiteframe class="md-whiteframe-z1" layout layout-align="space-around center">
       <pk-bar-sequence bar="ctrl.currentBar" beat-count="ctrl.beatCount" selected-beat="ctrl.currentNotes" default-note-params="ctrl.noteParams"></pk-bar-sequence>
     </md-whiteframe>

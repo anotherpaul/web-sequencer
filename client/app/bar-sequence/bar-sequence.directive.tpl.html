@@ -14,15 +14,17 @@
       </td>
     </tr>
     <tr ng-repeat="note in ctrl.displayedBar">
-      <td class="sequencer-note">
+      <td class="sequencer-head">
         <span class="sequencer-cell">
           {{note.name}}
         </span>
       </td>
       <td class="sequencer-beat" ng-repeat="beat in ctrl.getBeatCount()">
         <div class="sequencer-cell" layout="column" layout-align="space-around center" ng-show="!!note.beats[beat]">
-          <pk-note-params config="note.beats[beat]"></pk-note-params>
-          <md-button aria-label="delete" ng-click="ctrl.removeNote(note.name, beat)"><span><i class="fa fa-remove"></i></span>
+          <div class="sequencer-note">
+            <pk-note-params config="note.beats[beat]"></pk-note-params>
+            <md-button aria-label="delete" ng-click="ctrl.removeNote(note.name, beat)"><span><i class="fa fa-remove"></i></span>
+          </div>
           </md-button>
         </div>
         <div class="sequencer-cell" layout="column" layout-align="space-around center" ng-hide="!!note.beats[beat]">

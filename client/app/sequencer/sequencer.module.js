@@ -1,8 +1,8 @@
 (function () {
   'use strict';
   angular.module('pk-sequencer', [
-    'pk-piano-keyboard',
     'pk-bar-sequence',
+    'pk-instrument',
     'pk-midi',
     'pk-common'
   ]);
